@@ -83,10 +83,38 @@ body.page-leaving {
   display: block;
   height: auto;
   max-width: 90vw;
+  filter: grayscale(92%) contrast(98%);
+  transition:
+    opacity 0.25s ease,
+    filter 0.35s ease,
+    transform 0.65s ease;
 }
+
+/* Fade in on scroll */
+
+.gallery-image {
+  opacity: 0;
+  transform: translateY(18px);
+  cursor: zoom-in;
+}
+
+.gallery-image.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Return to color on hover */
+
+.gallery img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* IMAGE SIZES */
 
 .signature {
   width: 420px;
+  filter: none;
 }
 
 .landscape {
@@ -101,32 +129,12 @@ body.page-leaving {
   width: 470px;
 }
 
-/* SCROLL FADE */
-
-.gallery-image {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.65s ease,
-    transform 0.65s ease;
-  cursor: zoom-in;
-}
-
-.gallery-image.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.gallery-image:hover {
-  opacity: 0.92;
-}
-
 /* LIGHTBOX */
 
 .lightbox {
   position: fixed;
   inset: 0;
-  z-index: 2000;
+  z-index: 5000;
   display: none;
   justify-content: center;
   align-items: center;
@@ -139,22 +147,23 @@ body.page-leaving {
 }
 
 .lightbox img {
-  max-width: 92vw;
-  max-height: 88vh;
   width: auto;
   height: auto;
+  max-width: 92vw;
+  max-height: 90vh;
   object-fit: contain;
+  filter: none;
 }
 
 .lightbox-close {
   position: fixed;
   top: 22px;
   right: 28px;
-  border: 0;
+  border: none;
   background: transparent;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 300;
   cursor: pointer;
 }
@@ -172,8 +181,8 @@ body.lightbox-open {
   }
 
   .gallery {
-    gap: 40px;
-    padding: 55px 0 70px;
+    gap: 45px;
+    padding: 50px 0 70px;
   }
 
   .landscape,
