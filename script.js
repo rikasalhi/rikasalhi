@@ -18,14 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const galleryImages = document.querySelectorAll(".gallery-image");
+  const galleryItems = document.querySelectorAll(
+    ".gallery-image, .gallery-video"
+  );
 
-  const imageObserver = new IntersectionObserver(
-    (entries, observer) => {
+  const observer = new IntersectionObserver(
+    (entries, imageObserver) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
+          imageObserver.unobserve(entry.target);
         }
       });
     },
@@ -34,10 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  galleryImages.forEach((image) => {
-    imageObserver.observe(image);
+  galleryItems.forEach((item) => {
+    observer.observe(item);
   });
 
+  const galleryImages = document.querySelectorAll(".gallery-image");
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.getElementById("lightbox-image");
   const closeButton = document.querySelector(".lightbox-close");
