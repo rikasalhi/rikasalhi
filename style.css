@@ -80,6 +80,16 @@ body.page-leaving {
   padding: 80px 0 120px;
 }
 
+/* EACH IMAGE / VIDEO WITH CAPTION */
+
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
 /* PHOTOS AND VIDEO */
 
 .gallery img,
@@ -94,6 +104,21 @@ body.page-leaving {
   transition:
     opacity 0.25s ease,
     transform 0.35s ease;
+}
+
+/* CAPTIONS */
+
+figcaption {
+  max-width: 90vw;
+  color: #8a8a8a;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.35px;
+  line-height: 1.4;
+  text-align: center;
+  text-transform: lowercase;
+  user-select: none;
 }
 
 /* FADE IN */
@@ -203,6 +228,10 @@ body.lightbox-open {
 
   .signature {
     width: 65vw;
+  }
+
+  figcaption {
+    font-size: 10px;
   }
 
   .lightbox {
