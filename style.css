@@ -13,7 +13,7 @@ body {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   opacity: 0;
-  transition: opacity .35s ease;
+  transition: opacity 0.35s ease;
 }
 
 body.page-loaded {
@@ -24,7 +24,7 @@ body.page-leaving {
   opacity: 0;
 }
 
-/* ---------------- HOME ---------------- */
+/* HOME */
 
 .home {
   min-height: 100vh;
@@ -35,25 +35,25 @@ body.page-leaving {
 }
 
 .home h1 {
+  margin-bottom: 14px;
   font-size: 28px;
   font-weight: 400;
-  letter-spacing: -.5px;
+  letter-spacing: -0.5px;
   text-transform: lowercase;
-  margin-bottom: 14px;
 }
 
 .home a {
-  font-size: 24px;
   color: black;
+  font-size: 24px;
   text-decoration: none;
-  transition: opacity .2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .home a:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 
-/* ---------------- BACK BUTTON ---------------- */
+/* BACK BUTTON */
 
 .back {
   position: fixed;
@@ -61,15 +61,15 @@ body.page-leaving {
   left: 28px;
   z-index: 999;
   color: black;
-  text-decoration: none;
   font-size: 16px;
+  text-decoration: none;
 }
 
 .back:hover {
   text-decoration: underline;
 }
 
-/* ---------------- GALLERY ---------------- */
+/* GALLERY */
 
 .gallery {
   width: 100%;
@@ -80,43 +80,23 @@ body.page-leaving {
   padding: 80px 0 120px;
 }
 
-/* PHOTOS */
+/* PHOTOS AND VIDEO */
 
-.gallery img {
-  display: block;
-  max-width: 90vw;
-  height: auto;
-
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
-
-  transition:
-    transform .35s ease,
-    opacity .25s ease;
-}
-
-.gallery img:hover {
-  transform: scale(1.04);
-}
-
-/* VIDEOS */
-
+.gallery img,
 .gallery video {
   display: block;
-  max-width: 90vw;
   height: auto;
+  max-width: 90vw;
 
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
+  -webkit-filter: grayscale(100%) !important;
+  filter: grayscale(100%) !important;
 
-  transition: transform .35s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s ease;
 }
 
-.gallery video:hover {
-  transform: scale(1.04);
-}
-
-/* SCROLL ANIMATION */
+/* FADE IN */
 
 .gallery-image,
 .gallery-video {
@@ -130,7 +110,16 @@ body.page-leaving {
   transform: translateY(0);
 }
 
-/* IMAGE / VIDEO SIZES */
+/* HOVER */
+
+.gallery img:hover,
+.gallery video:hover {
+  -webkit-filter: grayscale(100%) !important;
+  filter: grayscale(100%) !important;
+  transform: scale(1.04);
+}
+
+/* SIZES */
 
 .signature {
   width: 420px;
@@ -148,20 +137,17 @@ body.page-leaving {
   width: 470px;
 }
 
-/* ---------------- LIGHTBOX ---------------- */
+/* LIGHTBOX */
 
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(255,255,255,.97);
-
+  z-index: 5000;
   display: none;
   justify-content: center;
   align-items: center;
-
   padding: 40px;
-
-  z-index: 5000;
+  background: rgba(255, 255, 255, 0.97);
 }
 
 .lightbox.open {
@@ -171,25 +157,24 @@ body.page-leaving {
 .lightbox img {
   width: auto;
   height: auto;
-
   max-width: 92vw;
   max-height: 90vh;
+  object-fit: contain;
 
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
+  -webkit-filter: grayscale(100%) !important;
+  filter: grayscale(100%) !important;
 }
 
 .lightbox-close {
   position: fixed;
   top: 22px;
   right: 28px;
-
-  background: transparent;
   border: none;
-
-  font-size: 34px;
+  background: transparent;
+  color: black;
   font-family: Arial, Helvetica, sans-serif;
-
+  font-size: 34px;
+  font-weight: 300;
   cursor: pointer;
 }
 
@@ -197,13 +182,12 @@ body.lightbox-open {
   overflow: hidden;
 }
 
-/* ---------------- MOBILE ---------------- */
+/* MOBILE */
 
-@media (max-width:800px) {
-
+@media (max-width: 800px) {
   .back {
-    left: 18px;
     top: 18px;
+    left: 18px;
   }
 
   .gallery {
@@ -212,8 +196,8 @@ body.lightbox-open {
   }
 
   .landscape,
-  .portrait,
-  .square {
+  .square,
+  .portrait {
     width: 90vw;
   }
 
@@ -225,4 +209,8 @@ body.lightbox-open {
     padding: 20px;
   }
 
+  .lightbox-close {
+    top: 14px;
+    right: 18px;
+  }
 }
