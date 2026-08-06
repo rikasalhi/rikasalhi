@@ -13,7 +13,7 @@ body {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity .35s ease;
 }
 
 body.page-loaded {
@@ -24,7 +24,7 @@ body.page-leaving {
   opacity: 0;
 }
 
-/* HOME */
+/* ---------------- HOME ---------------- */
 
 .home {
   min-height: 100vh;
@@ -35,30 +35,25 @@ body.page-leaving {
 }
 
 .home h1 {
-  margin-bottom: 14px;
   font-size: 28px;
   font-weight: 400;
-  letter-spacing: -0.5px;
+  letter-spacing: -.5px;
   text-transform: lowercase;
+  margin-bottom: 14px;
 }
 
 .home a {
-  color: black;
   font-size: 24px;
+  color: black;
   text-decoration: none;
-  transition: opacity 0.2s ease;
+  transition: opacity .2s ease;
 }
 
 .home a:hover {
-  opacity: 0.6;
-  text-decoration: none;
+  opacity: .6;
 }
 
-.home a:hover {
-  text-decoration: underline;
-}
-
-/* BACK BUTTON */
+/* ---------------- BACK BUTTON ---------------- */
 
 .back {
   position: fixed;
@@ -66,15 +61,15 @@ body.page-leaving {
   left: 28px;
   z-index: 999;
   color: black;
-  font-size: 16px;
   text-decoration: none;
+  font-size: 16px;
 }
 
 .back:hover {
   text-decoration: underline;
 }
 
-/* GALLERY */
+/* ---------------- GALLERY ---------------- */
 
 .gallery {
   width: 100%;
@@ -85,41 +80,57 @@ body.page-leaving {
   padding: 80px 0 120px;
 }
 
+/* PHOTOS */
+
 .gallery img {
   display: block;
-  height: auto;
   max-width: 90vw;
+  height: auto;
 
-  -webkit-filter: grayscale(100%) !important;
-  filter: grayscale(100%) !important;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
 
   transition:
-    opacity 0.25s ease,
-    transform 0.35s ease;
+    transform .35s ease,
+    opacity .25s ease;
 }
 
-/* FADE IN ON SCROLL */
+.gallery img:hover {
+  transform: scale(1.04);
+}
 
-.gallery-image {
+/* VIDEOS */
+
+.gallery video {
+  display: block;
+  max-width: 90vw;
+  height: auto;
+
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+
+  transition: transform .35s ease;
+}
+
+.gallery video:hover {
+  transform: scale(1.04);
+}
+
+/* SCROLL ANIMATION */
+
+.gallery-image,
+.gallery-video {
   opacity: 0;
   transform: translateY(20px);
-  cursor: zoom-in;
 }
 
-.gallery-image.visible {
+.gallery-image.visible,
+.gallery-video.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* HOVER: ENLARGE ONLY */
-
-.gallery img:hover {
-  -webkit-filter: grayscale(100%) !important;
-  filter: grayscale(100%) !important;
-  transform: scale(1.04);
-}
-
-/* IMAGE SIZES */
+/* IMAGE / VIDEO SIZES */
 
 .signature {
   width: 420px;
@@ -130,24 +141,27 @@ body.page-leaving {
 }
 
 .square {
-  width: 560px;
+  width: 430px;
 }
 
 .portrait {
   width: 470px;
 }
 
-/* LIGHTBOX */
+/* ---------------- LIGHTBOX ---------------- */
 
 .lightbox {
   position: fixed;
   inset: 0;
-  z-index: 5000;
+  background: rgba(255,255,255,.97);
+
   display: none;
   justify-content: center;
   align-items: center;
+
   padding: 40px;
-  background: rgba(255, 255, 255, 0.97);
+
+  z-index: 5000;
 }
 
 .lightbox.open {
@@ -157,24 +171,25 @@ body.page-leaving {
 .lightbox img {
   width: auto;
   height: auto;
+
   max-width: 92vw;
   max-height: 90vh;
-  object-fit: contain;
 
-  -webkit-filter: grayscale(100%) !important;
-  filter: grayscale(100%) !important;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
 }
 
 .lightbox-close {
   position: fixed;
   top: 22px;
   right: 28px;
-  border: none;
+
   background: transparent;
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+
   font-size: 34px;
-  font-weight: 300;
+  font-family: Arial, Helvetica, sans-serif;
+
   cursor: pointer;
 }
 
@@ -182,12 +197,13 @@ body.lightbox-open {
   overflow: hidden;
 }
 
-/* MOBILE */
+/* ---------------- MOBILE ---------------- */
 
-@media (max-width: 800px) {
+@media (max-width:800px) {
+
   .back {
-    top: 18px;
     left: 18px;
+    top: 18px;
   }
 
   .gallery {
@@ -196,8 +212,8 @@ body.lightbox-open {
   }
 
   .landscape,
-  .square,
-  .portrait {
+  .portrait,
+  .square {
     width: 90vw;
   }
 
@@ -209,8 +225,4 @@ body.lightbox-open {
     padding: 20px;
   }
 
-  .lightbox-close {
-    top: 14px;
-    right: 18px;
-  }
 }
